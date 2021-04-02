@@ -11,13 +11,7 @@ async function registruj()
     const usernameInp = document.querySelector("#username-input");
     const sifraInp = document.querySelector("#sifra-input");
     const mestoInp = document.querySelector("#mapid");
-    const o_meniInp = document.querySelector("#o_meni-input");
     const datum_rodjenjaInp = document.querySelector("#datum-input");
-
-    const muskiRadioButton = document.querySelector("#muskirb");
-    const zenskiRadioButton = document.querySelector("#zenskirb");
-
-    let pol = "";
 
     let ime = imeInp.value.trim();
     let prezime = prezimeInp.value.trim();
@@ -25,7 +19,6 @@ async function registruj()
     let username = usernameInp.value.trim();
     let sifra = sifraInp.value.trim();
     let mesto = mestoInp.value.s;
-    let o_meni = o_meniInp.value.trim();
     let datum_rodjenja = datum_rodjenjaInp.value;
 
     let moze = true;
@@ -82,16 +75,6 @@ async function registruj()
         }
     }
 
-    if(muskiRadioButton.checked)pol = "muski";
-    else if(zenskiRadioButton.checked)pol = "zenski";
-    else 
-    {
-        const errorPol = document.querySelector("#error-pol");
-        errorPol.classList.add("visible");
-        console.log("Pol error");
-        moze = false;
-    }
-
     if(mesto == null){
         const errorMesto = document.querySelector("#error-mesto");
         errorMesto.classList.add("visible");
@@ -108,10 +91,8 @@ async function registruj()
 			mail: email,
 			sifra: sifra,
 			user_name: username,
-			pol: pol,
 			mesto: mesto,
 			profilna_slika: "default.png",
-			o_meni: o_meni,
 			datum_rodjenja: datum_rodjenja,
         }
         try {

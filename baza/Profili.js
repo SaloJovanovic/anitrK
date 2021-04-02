@@ -26,11 +26,6 @@ const ProfilSema = new mongoose.Schema({
         trim: true,
         required: true,
     },
-    pol: {
-        type: String,
-        trim: true,
-        required: false,
-    },
     mesto: {
         type: String,
         trim: true,
