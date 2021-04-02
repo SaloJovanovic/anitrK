@@ -365,3 +365,14 @@ input:focus {
 .file:hover {
     cursor: pointer;
 }
+
+.error {
+    display: none;
+    color: red;
+    margin: 5px;
+    font-size: 0.9em;
+}
+
+.error.visible {
+    display: flex;
+}

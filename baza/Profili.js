@@ -36,11 +36,6 @@ const ProfilSema = new mongoose.Schema({
         trim: true,
         required: true,
     },
-    datum_rodjenja: {
-        type: Date,
-        trim: true,
-        required: false,
-    },
     id_casova:{
         type: Array,
         trim: true,

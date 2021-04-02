@@ -43,22 +43,27 @@
                     Login
                 </span>
                 <div class="wrap-input100">
+                    <p class="error" id="ime-error">Mora da sadrži više od dva karaktera!</p>
                     <input class="input100 ime-input" type="text" name="ime" placeholder="Ime">
                 </div>
                 <div class="wrap-input100">
+                    <p class="error" id="error-prezime">Mora da sadrži više od dva karaktera!</p>
                     <input class="input100 prezime-input" type="text" name="prezime" placeholder="Prezime">
                 </div>
                 <div class="wrap-input100">
+                    <p class="error" id="error-username">Mora da sadrži više od dva karaktera!</p>
                     <input class="input100 username-input" type="text" name="username" placeholder="Korisničko ime">
                 </div>
                 <div class="wrap-input100">
+                    <p class="error" id="error-email">Mora da sadrži više od dva karaktera!</p>
                     <input class="input100 mail-input" type="text" name="email" placeholder="Email">
                 </div>
                 <div class="wrap-input100">
+                    <p class="error" id="error-sifra">Mora da sadrži više od dva karaktera!</p>
                     <input class="input100 password-input" type="password" name="pass" placeholder="Password">
                 </div>
                 <div class="container-login100-form-btn">
-                    <a href="#" class="btn">REGISTRUJ SE</a>
+                    <a href="#" onclick="registruj();" class="btn">REGISTRUJ SE</a>
                 </div>
                 <div class="nemate-nalog-container">
                     <a href="login.html">Uloguj se →</a>
@@ -67,6 +72,8 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="register.js"></script>
+
 </body>
-    <script src="mapa.js"></script>
 </html>
