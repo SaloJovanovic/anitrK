@@ -266,7 +266,8 @@ section {
 
 .login100-pic {
     position: relative;
-    margin: 100px;
+    width: 45%;
+    height: 518px;
 }
 
 .login100-pic img {
@@ -304,4 +305,21 @@ input {
 
 input:focus {
     outline: none;
+}
+
+.imeprezime-input {
+    width: 100%;
+    display: flex;
+}
+
+.nemate-nalog-container {
+    margin-top: 70px;
+    margin-bottom: -70px;
+    position: relative;
+    text-align: center;
+}
+
+.nemate-nalog-container a{
+    text-decoration: none;
+    color: var(--accent2);
 }
