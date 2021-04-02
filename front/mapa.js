@@ -1,7 +1,7 @@
-var mymap = L.map('mapid').setView([0, 0], 1);
+var mymap = L.map('mapid').setView([51.5, -0.09], 13);
 
-        L.tileLayer('https://api.maptiler.com/maps/streets/%7Bz%7D/%7Bx%7D/%7By%7D.png?key=QEkQHmpDImGWW1v52pUp', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright%22%3EOpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/%22%3EMapbox</a>',
+        L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
             tileSize: 512,
