@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const videoSchema = mongoose.Schema({
+const kurs_sema = mongoose.Schema({
     naziv :{
         type: String,
     },
@@ -26,6 +26,4 @@ const videoSchema = mongoose.Schema({
 });
 
 
-const Video = mongoose.model('Video', videoSchema);
-
-module.exports = { Video }
+module.exports = mongoose.model('kurs_sema', kurs_sema);

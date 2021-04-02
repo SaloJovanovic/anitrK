@@ -2,8 +2,9 @@ const { response, json } = require("express");
 const express = require("express");
 const app = express();
 const konektujBazu = require("./baza/baza");
-const kurs_sema = require("./baza/Video");
+const kurss = require("./baza/Video");
 const profili_sema = require("./baza/Profili");
+const multer = require("multer");
 
 const PORT = process.env.PORT || 3000;
 const hostname = '0.0.0.0';
@@ -105,46 +106,10 @@ app.post("/api/profili/dodaj", async (req, res) => {
 
 //KURS
 
-//Dodavanje kursa
-app.post("/api/kursevi/dodaj", async (req, res) => {
-    try {
-        const naziv = req.body.naziv;
-        const id_instruktora = req.body.id_instruktora;
-        const deskripcija = req.body.deskripcija;
-        const filePath = req.body.filePath;
-        const cena = req.body.cena;
-        const broj_pretplacenih = req.body.broj_pretplacenih;
-        const ocena = req.body.ocena;
-
-        const NoviKurs = new kurs_sema({
-            naziv: naziv,
-            id_instruktora: id_instruktoram,
-            deskripcija: deskripcija,
-            filePath: filePath,
-            cena: cena,
-            broj_pretplacenih: broj_pretplacenih,
-            ocena: ocena
-        });
-
-        const noviKursSacuvan = await NoviKurs.save();
-
-        res.json({
-            uspesno: true,
-            kurs: noviKursSacuvan
-        });
-
-    } catch (err) {
-        res.status(404).json({
-            uspesno: false,
-            poruka: err.message,
-        });
-    }
-});
-
 //Ispis svih kruseva
 app.get("/api/kursevi", async (req, res) => {
     try {
-        const kursevi = await kurs_sema.find();
+        const kursevi = await kurss.find();
 
         res.json({
             uspesno: true,
@@ -157,3 +122,102 @@ app.get("/api/kursevi", async (req, res) => {
         });
     }
 });
+
+//Pravljenje kursa
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "uploads/")
+    },
+    filename: (req, file, cb) =>{
+        const ime_fajla = Date.now() + "-" + file.originalname;
+        req.body.ime_fajla = ime_fajla;
+        cb(null, ime_fajla)
+            
+    },
+  })
+  
+  const uploadStorage = multer({ storage: storage })
+  
+  app.post("/upload/kurs", uploadStorage.single("file"), async (req, res) => {
+    try {
+        const naziv = req.body.naziv;
+        const id_instruktora = req.body.id_instruktora;
+        const deskripcija = req.body.deskripcija;
+        const filePath = req.body.ime_fajla;
+        const cena = req.body.cena;
+        const broj_pretplacenih = 0;
+        const ocena = 0;
+        const NoviKurs = new kurss({
+            naziv: naziv,
+            id_instruktora: id_instruktora,
+            deskripcija: deskripcija,
+            filePath: filePath,
+            cena: cena,
+            broj_pretplacenih: broj_pretplacenih,
+            ocena: ocena
+        });
+        
+        const noviKursSacuvan = await NoviKurs.save();
+        
+        res.json({
+            uspesno: true,
+            kurs: noviKursSacuvan
+        });
+
+    } catch (err) {
+        res.status(404).json({
+            uspesno: false,
+            poruka: err.message,
+        });
+    }
+  })
+
+  app.get("/kurs/:id", async (req, res) => {
+    try{    
+        const id_kursa =  req.params.id;
+        const kurs = kurss.findById(id_kursa);
+        res.json({
+            uspesno:true,
+            kurs: kurs
+        });
+    }
+    catch(err){
+        res.status(404).json({
+            uspesno: false,
+            poruka: err.message,
+        });
+    }
+});
+
+    app.post("/kurs/:id_kursa/:id_coveka", async (req, res) => {
+        try{
+            const id_kurs = req.params.id_kursa;
+            const id_cok = req.params.id_coveka;
+
+            const kurs = await kurss.findById(id_kurs);
+
+            kurs.broj_pretplacenih++;
+
+            const profili = await profili_sema.findById(id_cok);
+
+            profili.id_casova.push(id_kurs);
+
+            await kurs.save();
+
+            await profili.save();
+
+            res.json({
+                uspesno:true,
+                kurs: kurs,
+                profili: profili
+            });
+        }
+        catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
