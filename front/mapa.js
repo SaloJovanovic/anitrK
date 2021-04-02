@@ -20,6 +20,6 @@ var s;
                 .setContent("You clicked the map at " + e.latlng.toString())
                 .openOn(mymap);
                 console.log(e.latlng.toString());
-                s = e.latlng;
+                s = e.latlng.toString();
         }
         mymap.on('click', onMapClick);

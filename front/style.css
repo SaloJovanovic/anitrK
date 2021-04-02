@@ -155,9 +155,14 @@ header .navigation li a:hover {
 
 section {
     padding: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.content {
+section .content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -218,7 +223,8 @@ section {
 }
 
 .wrap-login100 {
-    width: 960px;
+    width: 100%;
+    max-width: 960px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -338,5 +344,35 @@ input:focus {
     height: 600px;
 }
 
-.imeprezime {
+.form-container {
+    justify-content: center;
+}
+
+.file {
+    height: 50px;
+    width: 100%;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-image: linear-gradient(to right, var(--accent2), var(--accent1));
+}
+
+.file p {
+    color: #fff;
+}
+
+.file:hover {
+    cursor: pointer;
+}
+
+.error {
+    display: none;
+    color: red;
+    margin: 5px;
+    font-size: 0.9em;
+}
+
+.error.visible {
+    display: flex;
 }

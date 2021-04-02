@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <title>Document</title>
-    <style>
-        #mapid { 
-            height: 250px;
-            width: 250px;
-            padding: 30px;
-        }
-    </style>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <section class="banner banner-register">
-        <div class="wrap-login100">
-            <div class="login100-map">
-                <div class="wrap-input100">
-                    <h3>Mesto boravka?</h3>
-                    <div id="mapid"></div>
-                </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="#" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="index.html#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="login.html" id="register-btn" onclick="toggleMenu();">ULOGUJ SE</a></li>
+            </ul>
+        </header>
+        <section class="banner banner-register">
+            <div class="wrap-login100 form-container">
+                <form class="login100-form">
+                    <span class="login100-form-title">
+                        Novi kurs
+                    </span>
+                    <div class="wrap-input100">
+                        <input class="input100 naziv-kursa-input" type="text" name="naziv-kursa" placeholder="Naziv kursa">
+                    </div>
+                    <div class="wrap-input100">
+                        <input class="input100 opis-kursa-input" type="text" name="opis-kursa" placeholder="Opis kursa">
+                    </div>
+                    <div class="wrap-input100">
+                        <input class="input100 cena-kursa-input" type="text" name="cena-kursa" placeholder="Cena kursa u dinarima">
+                    </div>
+                    <div class="wrap-input100">
+                        <input class="input100 opis-kursa-input" type="text" name="opis-kursa" placeholder="Opis kursa">
+                    </div>
+                    <div class="file wrap-input100">
+                        <p>IZABERI FAJLOVE</p>
+                        <input type="file" id="file" aria-label="File browser example" hidden="hidden">
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <a href="#" class="btn">NAPRAVI KURS</a>
+                    </div>
+                </form>
             </div>
-            <form class="login100-form">
-                <span class="login100-form-title">
-                    Login
-                </span>
-                <div class="wrap-input100">
-                    <input class="input100 ime-input" type="text" name="ime" placeholder="Ime">
-                </div>
-                <div class="wrap-input100">
-                    <input class="input100 prezime-input" type="text" name="prezime" placeholder="Prezime">
-                </div>
-                <div class="wrap-input100">
-                    <input class="input100 username-input" type="text" name="username" placeholder="Korisničko ime">
-                </div>
-                <div class="wrap-input100">
-                    <input class="input100 mail-input" type="text" name="email" placeholder="Email">
-                </div>
-                <div class="wrap-input100">
-                    <input class="input100 password-input" type="password" name="pass" placeholder="Password">
-                </div>
-                <div class="container-login100-form-btn">
-                    <a href="#" class="btn">ULOGUJ SE</a>
-                </div>
-                <div class="nemate-nalog-container">
-                    <a href="login.html">Uloguj se →</a>
-                </div>
-            </form>
-        </div>
-    </section>
+        </section>
 
-</body>
-    <script src="mapa.js"></script>
+    </body>
 </html>

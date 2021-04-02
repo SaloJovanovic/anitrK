@@ -2,30 +2,54 @@ async function log(id){
     Cookies.set("log", "true");
     Cookies.set("log_id", id);
 }
+var mymap = L.map('mapid').setView([44.787197, 20.457273], 9);
+var s;
+
+        L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
+        }).addTo(mymap);
+
+        var marker = L.marker([44.787197, 20.457273]).addTo(mymap);
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(mymap);
+                console.log(e.latlng.toString());
+                s = e.latlng.toString();
+        }
+        mymap.on('click', onMapClick);
 
 async function registruj()
 {
-    const imeInp = document.querySelector("#ime-input");
-    const prezimeInp = document.querySelector("#prezime-input");
-    const emailInp = document.querySelector("#email-input");
-    const usernameInp = document.querySelector("#username-input");
-    const sifraInp = document.querySelector("#sifra-input");
-    const mestoInp = document.querySelector("#mapid");
-    const datum_rodjenjaInp = document.querySelector("#datum-input");
+    const imeInp = document.querySelector(".ime-input");
+    const prezimeInp = document.querySelector(".prezime-input");
+    const emailInp = document.querySelector(".mail-input");
+    const usernameInp = document.querySelector(".username-input");
+    const sifraInp = document.querySelector(".password-input");
+    // const mestoInp = document.querySelector("#mapid");
 
     let ime = imeInp.value.trim();
     let prezime = prezimeInp.value.trim();
     let email = emailInp.value.trim();
     let username = usernameInp.value.trim();
     let sifra = sifraInp.value.trim();
-    let mesto = mestoInp.value.s;
-    let datum_rodjenja = datum_rodjenjaInp.value;
+    let mesto = s.split("LatLng")[1];
+    console.log("Mesto je " + mesto);
 
     let moze = true;
 
     if(ime.length < 2){
-        const errorIme = document.querySelector("#error-ime");
-        errorIme.classList.add("visible");
+        const errorIme = document.querySelector("#ime-error");
+        errorIme.classList.add('visible')
         console.log("Ime error");
         moze = false;
     }
@@ -93,10 +117,9 @@ async function registruj()
 			user_name: username,
 			mesto: mesto,
 			profilna_slika: "default.png",
-			datum_rodjenja: datum_rodjenja,
         }
         try {
-            await axios.post("/api/profili", sviPodaci);
+            await axios.post("/api/profili/dodaj", sviPodaci);
             let nadjiProfil = await axios.get(`/api/profili/username/${username}`);
             log(nadjiProfil.data.profil._id);
             console.log("Uspesno prijavljivanje");
