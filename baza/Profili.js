@@ -47,7 +47,7 @@ const ProfilSema = new mongoose.Schema({
         required: false,
     },
     id_casova:{
-        type: String,
+        type: Array,
         trim: true,
         required: false,
     },
