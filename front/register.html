@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <title>Document</title>
+    <style>
+        #mapid { 
+            height: 250px;
+            width: 250px;
+            padding: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="banner banner-register">
+        <div class="form">
+            <div class="row">
+                <div class="col30">
+                    <h2>Ime</h2>
+                    <p class="error" id="error-ime">Ime mora da sadrži više od jednog karaktera!<p>
+                    <input id="ime-input">
+                    <h2>Prezime</h3>
+                    <p class="error" id="error-prezime">Prezime mora da sadrži više od jednog karaktera!<p>
+                    <input id="prezime-input">
+                    <h2>Email</h2>
+                    <p class="error" id="error-email">Email mora da sadrzi '@'!<p>
+                    <input id="email-input">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col30">
+                    <h2>Sifra</h2>
+                    <p class="error" id="error-sifra">Sifra mora da sadrzi vise od 4 karaktera!<p>
+                    <input id="sifra-input" type="password">
+                    <h2>Username</h2>
+                    <p class="error" id="error-username">Username mora da sadrzi vise od 4 karaktera!<p>
+                    <input id="username-input">
+                    <h2>Pol</h2>
+                    <p class="error" id="error-pol">Pol mora biti izabran!<p>
+                    <div class="radiobutton">
+                        <input id="muskirb" type="radio">
+                        <h3>Muski</h3>
+                    </div>
+                    <div class="radiobutton">
+                        <input id="zenskirb" type="radio">
+                        <h3>Znenski</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col30">
+                    <h2>Grad/Region</h2>
+                    <p class="error" id="error-mesto">Mesto mora da sadrzi vise od jednog karaktera!<p>
+                    <div id="mapid"></div>
+                    <h2>O meni</h2>
+                    <input id="o_meni-input">
+                    <h2>Datum rodjenja</h2>
+                    <input id="datum-input" type="date">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn register-btn" onclick="registruj()">REGISTRUJ SE</a>
+    </section>
+
+    <script>
+        var mymap = L.map('mapid').setView([0, 0], 1);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/%7Bid%7D/tiles/%7Bz%7D/%7Bx%7D/%7By%7D?access_token=%7BaccessToken%7D', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright%22%3EOpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/%22%3EMapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
+        }).addTo(mymap);
+
+        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(mymap);
+                console.log(e.latlng.toString());
+        }
+        mymap.on('click', onMapClick);
+    </script>
+</body>
+
+    <!-- <script src="mapa.js"></script> -->
+</html>
