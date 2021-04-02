@@ -106,10 +106,10 @@ app.post("/api/profili/dodaj", async (req, res) => {
 
 //KURS
 
-//Ispis svih kruseva
+//Ispis svih kruseva (sortirano po oceni)
 app.get("/api/kursevi", async (req, res) => {
     try {
-        const kursevi = await kurss.find();
+        const kursevi = await kurss.find().sort({ocena: -1});
 
         res.json({
             uspesno: true,
@@ -148,6 +148,10 @@ const storage = multer.diskStorage({
         const cena = req.body.cena;
         const broj_pretplacenih = 0;
         const ocena = 0;
+        const broj_ocena = 0;
+        const korisnici_ocenjeni = req.body.korisnici_ocenjeni;
+        const skupljene_pare = 0;
+        const procenat = req.body.procenat;
         const NoviKurs = new kurss({
             naziv: naziv,
             id_instruktora: id_instruktora,
@@ -155,7 +159,11 @@ const storage = multer.diskStorage({
             filePath: filePath,
             cena: cena,
             broj_pretplacenih: broj_pretplacenih,
-            ocena: ocena
+            ocena: ocena,
+            broj_ocena: broj_ocena,
+            korisnici_ocenjeni: korisnici_ocenjeni,
+            procenat_human: procenat,
+            skupljene_pare: skupljene_pare
         });
         
         const noviKursSacuvan = await NoviKurs.save();
@@ -172,7 +180,7 @@ const storage = multer.diskStorage({
         });
     }
   })
-
+//Pronalazenje kursa po idu
   app.get("/kurs/:id", async (req, res) => {
     try{    
         const id_kursa =  req.params.id;
@@ -189,7 +197,7 @@ const storage = multer.diskStorage({
         });
     }
 });
-
+    //Pretplata kursa
     app.post("/kurs/:id_kursa/:id_coveka", async (req, res) => {
         try{
             const id_kurs = req.params.id_kursa;
@@ -198,6 +206,7 @@ const storage = multer.diskStorage({
             const kurs = await kurss.findById(id_kurs);
 
             kurs.broj_pretplacenih++;
+            kurs.skupljene_pare=kurs.skupljene_pare + (kurs.cena * kurs.procenat /100);
 
             const profili = await profili_sema.findById(id_cok);
 
@@ -220,4 +229,87 @@ const storage = multer.diskStorage({
             });
         }
 
+    });
+    //Kurs ocenjivanje
+    app.post("/kurs/ocena/:id_kursa/:id_coveka", async (req, res) => {
+        try{
+            const id_kurs = req.params.id_kursa;
+            const id_cok = req.params.id_coveka;
+
+            const kurs = await kurss.findById(id_kurs);
+
+            let ocena = req.body.ocena;
+
+            kurs.data.ocena = (kurs.data.ocena * kurs.data.broj_pretplacenih + ocena) / (kurs.data.broj_pretplacenih+1);
+            
+            kurs.korisnici_ocenjeni.push(id_cok);
+
+            await kurs.save();
+
+            res.json({
+                uspesno:true,
+                kurs: kurs
+            });
+        }
+        catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
+    //kurs provera da li je ocenio
+    app.get("/kurs/ocena_bool/:id_kursa/:id_coveka", async (req, res) =>{
+       try{
+        const id_kurs = req.params.id_kursa;
+        const id_cok = req.params.id_coveka;
+
+        const kurs = await kurss.findById(id_kurs);
+
+        const profili = await profili_sema.findById(id_cok);
+
+        var ocenio = false;
+
+        for(let i=0;i<kurs.korisnici_ocenjeni.length;i++){
+            if(profili._id == kurs.korisnici_ocenjeni[i]){
+                ocenio = true;
+            }
+        }
+        res.json({
+            uspesno:true,
+            ocenio: ocenio
+        });
+        }
+        catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
+    //Kursevi u kojima je korisnik
+    app.get("/kurs/prisutan/:id_coveka", async (req, res) =>{
+        try{
+        const id_cok = req.params.id_coveka;
+
+        const profili = await profili_sema.findById(id_cok);
+
+        let kurs = [];
+        for(let i=0;i<profili.id_casova.length;i++){
+            kurs.push(await kurss.findById(profili.id_casova[i]));
+        }
+        kurs = kurs.sort({ocena: -1});
+        res.json({
+            uspesno:true,
+            kursevi: kurs
+        });
+        }
+        catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
     });

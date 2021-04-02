@@ -23,6 +23,19 @@ const kurs_sema = mongoose.Schema({
         type: Number,
         default: 0 
     },
+    broj_ocena: {
+        type: Number,
+        default: 0
+    },
+    korisnici_ocenjeni:{
+        type: Array,
+    },
+    procenat_human:{
+        type: Number,
+    },
+    skupljene_pare: {
+        type: Number
+    }
 });
 
 
