@@ -4,9 +4,64 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Document</title>
     </head>
     <body>
-        <input type="file">
+        <header>
+            <a id="logo" href="#" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="#banner" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="#register-btn" id="register-btn" onclick="toggleMenu();">REGISTRUJ SE</a></li>
+            </ul>
+        </header>
+        <section class="banner" id="banner">
+            <div class="content">
+                <img src="images/logo-blank.png">
+                <h2>Always Choose Good</h2>
+                <p id="p1">Od školske 2004/2005. godine svaka upisna godina ima 9 odeljenja: 4 prirodno-matematička, 4 društveno-jezička i 1 bilingvalno. 
+                    U bilingvalnim odeljenjima nastava se obavlja na dva jezika, na italijanskom ili francuskom jeziku i srpskom jeziku. 
+                    Za pohađanje nastave u bilingvalnom odeljenju prethodno se mora položiti prijemni ispit iz italijanskog ili 
+                    francuskog jezika.</p>
+                <a href="#articles" class="btn">Saznaj više</a>
+            </div>
+        </section>
+
+        <section class="kursevi" id="kursevi">
+            <div class="content">
+                <div class="article-container">
+                    <div class="imgBox">
+                        <img src="images/slika1.png">
+                    </div>
+                    <div class="naslov">
+                        <h3>Programiranje u c#-u</h3>
+                    </div>
+                    <div class="opis">
+                        <p>Predaje profesor sa Matematickog fakulteta</p>
+                    </div>
+                    <a href="#" class="btn">Saznaj Više</a>
+                </div>
+                <div class="article-container">
+
+                </div>
+                <div class="article-container">
+
+                </div>
+                <div class="article-container">
+
+                </div>
+                <div class="article-container">
+
+                </div>
+            </div>
+        </section>
+
+        <script src="index.js"></script>
     </body>
 </html>
