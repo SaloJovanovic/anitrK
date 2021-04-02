@@ -1,4 +1,5 @@
 var mymap = L.map('mapid').setView([51.5, -0.09], 13);
+var s;
 
         L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -19,5 +20,6 @@ var mymap = L.map('mapid').setView([51.5, -0.09], 13);
                 .setContent("You clicked the map at " + e.latlng.toString())
                 .openOn(mymap);
                 console.log(e.latlng.toString());
+                s = e.latlng;
         }
         mymap.on('click', onMapClick);
