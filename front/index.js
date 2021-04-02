@@ -1,4 +1,4 @@
-console.log("cao")
+console.log("cao");
 
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
