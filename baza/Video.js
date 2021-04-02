@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const videoSchema = mongoose.Schema({
+    naziv :{
+        type: String,
+    },
     Id_instruktora :{
         type: String,
     },
@@ -16,18 +19,11 @@ const videoSchema = mongoose.Schema({
     broj_pretplacenih :{
         type: Number,
     },
-    catogory: String,
-    views : {
+    ocena : {
         type: Number,
         default: 0 
     },
-    duration :{
-        type: String
-    },
-    thumbnail: {
-        type: String
-    }
-}, { timestamps: true })
+});
 
 
 const Video = mongoose.model('Video', videoSchema);
