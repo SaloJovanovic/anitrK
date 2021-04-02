@@ -4,7 +4,7 @@ const videoSchema = mongoose.Schema({
     naziv :{
         type: String,
     },
-    Id_instruktora :{
+    id_instruktora :{
         type: String,
     },
     deskripcija :{

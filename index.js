@@ -2,7 +2,7 @@ const { response, json } = require("express");
 const express = require("express");
 const app = express();
 const konektujBazu = require("./baza/baza");
-const Cas_Schema = require("./baza/Video");
+const kurs_sema = require("./baza/Video");
 const profili_sema = require("./baza/Profili");
 
 const PORT = process.env.PORT || 3000;
@@ -102,3 +102,58 @@ app.post("/api/profili/dodaj", async (req, res) => {
         });
     }
 })
+
+//KURS
+
+//Dodavanje kursa
+app.post("/api/kursevi/dodaj", async (req, res) => {
+    try {
+        const naziv = req.body.naziv;
+        const id_instruktora = req.body.id_instruktora;
+        const deskripcija = req.body.deskripcija;
+        const filePath = req.body.filePath;
+        const cena = req.body.cena;
+        const broj_pretplacenih = req.body.broj_pretplacenih;
+        const ocena = req.body.ocena;
+
+        const NoviKurs = new kurs_sema({
+            naziv: naziv,
+            id_instruktora: id_instruktoram,
+            deskripcija: deskripcija,
+            filePath: filePath,
+            cena: cena,
+            broj_pretplacenih: broj_pretplacenih,
+            ocena: ocena
+        });
+
+        const noviKursSacuvan = await NoviKurs.save();
+
+        res.json({
+            uspesno: true,
+            kurs: noviKursSacuvan
+        });
+
+    } catch (err) {
+        res.status(404).json({
+            uspesno: false,
+            poruka: err.message,
+        });
+    }
+});
+
+//Ispis svih kruseva
+app.get("/api/kursevi", async (req, res) => {
+    try {
+        const kursevi = await kurs_sema.find();
+
+        res.json({
+            uspesno: true,
+            kursevi: kursevi
+        });
+    } catch (err) {
+        res.status(404).json({
+            uspesno: false,
+            poruka: err.message
+        });
+    }
+});
