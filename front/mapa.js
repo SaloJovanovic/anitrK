@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([51.5, -0.09], 13);
+var mymap = L.map('mapid').setView([44.787197, 20.457273], 9);
 var s;
 
         L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
@@ -10,7 +10,7 @@ var s;
             accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
         }).addTo(mymap);
 
-        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+        var marker = L.marker([44.787197, 20.457273]).addTo(mymap);
 
         var popup = L.popup();
 

@@ -18,55 +18,43 @@
 </head>
 <body>
     <section class="banner banner-register">
-        <div class="form">
-            <div class="row">
-                <div class="col30">
-                    <h2>Ime</h2>
-                    <p class="error" id="error-ime">Ime mora da sadrži više od jednog karaktera!<p>
-                    <input id="ime-input">
-                    <h2>Prezime</h3>
-                    <p class="error" id="error-prezime">Prezime mora da sadrži više od jednog karaktera!<p>
-                    <input id="prezime-input">
-                    <h2>Email</h2>
-                    <p class="error" id="error-email">Email mora da sadrzi '@'!<p>
-                    <input id="email-input">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col30">
-                    <h2>Sifra</h2>
-                    <p class="error" id="error-sifra">Sifra mora da sadrzi vise od 4 karaktera!<p>
-                    <input id="sifra-input" type="password">
-                    <h2>Username</h2>
-                    <p class="error" id="error-username">Username mora da sadrzi vise od 4 karaktera!<p>
-                    <input id="username-input">
-                    <h2>Pol</h2>
-                    <p class="error" id="error-pol">Pol mora biti izabran!<p>
-                    <div class="radiobutton">
-                        <input id="muskirb" type="radio">
-                        <h3>Muski</h3>
-                    </div>
-                    <div class="radiobutton">
-                        <input id="zenskirb" type="radio">
-                        <h3>Znenski</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col30">
-                    <h2>Grad/Region</h2>
-                    <p class="error" id="error-mesto">Mesto mora biti odabrano!<p>
+        <div class="wrap-login100">
+            <div class="login100-map">
+                <div class="wrap-input100">
+                    <h3>Mesto boravka?</h3>
                     <div id="mapid"></div>
-                    <h2>O meni</h2>
-                    <input id="o_meni-input">
-                    <h2>Datum rodjenja</h2>
-                    <input id="datum-input" type="date">
                 </div>
             </div>
+            <form class="login100-form">
+                <span class="login100-form-title">
+                    Login
+                </span>
+                <div class="wrap-input100">
+                    <input class="input100 ime-input" type="text" name="ime" placeholder="Ime">
+                </div>
+                <div class="wrap-input100">
+                    <input class="input100 prezime-input" type="text" name="prezime" placeholder="Prezime">
+                </div>
+                <div class="wrap-input100">
+                    <input class="input100 username-input" type="text" name="username" placeholder="Korisničko ime">
+                </div>
+                <div class="wrap-input100">
+                    <input class="input100 mail-input" type="text" name="email" placeholder="Email">
+                </div>
+                <div class="wrap-input100">
+                    <input class="input100 password-input" type="password" name="pass" placeholder="Password">
+                </div>
+                <div class="container-login100-form-btn">
+                    <a href="#" class="btn">ULOGUJ SE</a>
+                </div>
+                <div class="nemate-nalog-container">
+                    <a href="login.html">Uloguj se →</a>
+                </div>
+            </form>
         </div>
-        <a href="#" class="btn register-btn" onclick="registruj()">REGISTRUJ SE</a>
     </section>
 
 </body>
     <script src="mapa.js"></script>
 </html>
+<!-- <div id="mapid"></div> -->

@@ -323,3 +323,20 @@ input:focus {
     text-decoration: none;
     color: var(--accent2);
 }
+
+.login100-map {
+    width: 40%;
+}
+
+.login100-map h3 {
+    margin: 10%;
+}
+
+#mapid {
+    margin: 10%;
+    width: 100%;
+    height: 600px;
+}
+
+.imeprezime {
+}
