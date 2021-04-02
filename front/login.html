@@ -30,23 +30,16 @@
                     <span class="login100-form-title">
                         Login
                     </span>
-                    <!-- <div class="wrap-input100">
-                        <input class="input100 ime-input" type="text" name="ime" placeholder="Ime">
-                    </div>
                     <div class="wrap-input100">
-                        <input class="input100 prezime-input" type="text" name="prezime" placeholder="Prezime">
-                    </div>
-                    <div class="wrap-input100">
-                        <input class="input100 username-input" type="text" name="username" placeholder="Korisničko ime">
-                    </div> -->
-                    <div class="wrap-input100">
+                        <p class="error" id="error-mail"></p>
                         <input class="input100 mail-input" type="text" name="email" placeholder="Email / Korisničko ime">
                     </div>
                     <div class="wrap-input100">
+                        <p class="error" id="error-password"></p>
                         <input class="input100 password-input" type="password" name="pass" placeholder="Password">
                     </div>
                     <div class="container-login100-form-btn">
-                        <a href="#" class="btn">ULOGUJ SE</a>
+                        <a href="#" onclick="uloguj();" class="btn">ULOGUJ SE</a>
                     </div>
                     <div class="nemate-nalog-container">
                         <a href="register.html">Napravi nalog →</a>
@@ -56,6 +49,7 @@
         </section>
 
         <script src="index.js"></script>
-        <script src="mapa.js"></script>
+        <script src="login.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </body>
 </html>
