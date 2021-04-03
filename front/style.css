@@ -356,6 +356,7 @@ input:focus {
     justify-content: center;
     display: flex;
     background-image: linear-gradient(to right, var(--accent2), var(--accent1));
+    transition: 0.5s;
 }
 
 .file p {
@@ -364,6 +365,8 @@ input:focus {
 
 .file:hover {
     cursor: pointer;
+    letter-spacing: 5px;
+    height: 60px;
 }
 
 .error {
