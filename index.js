@@ -255,8 +255,10 @@ const storage = multer.diskStorage({
             const kurs = await kurss.findById(id_kurs);
 
             let ocena = req.body.ocena;
-
-            kurs.data.ocena = (kurs.data.ocena * kurs.data.broj_pretplacenih + ocena) / (kurs.data.broj_pretplacenih+1);
+            kurs.broj_ocena += 1;
+            kurs.ocena += ocena;
+            // kurs.ocena = (kurs.ocena * kurs.broj_ocena + ocena) / (kurs.broj_ocena);
+            
             
             kurs.korisnici_ocenjeni.push(id_cok);
 
