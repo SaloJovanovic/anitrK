@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="#" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="#banner" onclick="toggleMenu();">Početna</a></li>
+                <li><a id="kursevi" onclick="toggleNav();">Kursevi ᐯ</a></li>
+                <div class="sub-nav-container">
+                    <li class="sub-nav"><a href="novi-kurs.html">Napravi kurs</a></li>
+                    <li class="sub-nav"><a href="kursevi.html">Svi kursevi</a></li>
+                </div>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#" onclick="toggleMenu();">Kontakt</a></li>
+                <li><p id="username-p"></p></li>
+                <li><a href="#" id="register-btn" onclick="ulogujSe()">ULOGUJ SE</a></li>
+            </ul>
+        </header>
+        <section class="banner" id="banner">
+            <div class="content">
+                <img id="banner-logo" src="images/logo-blank.png">
+                <h2>Kontakt</h2>
+                <div>
+                    <p id="p1">e-mail: naucipomozi@gmail.com</p>
+                </div>
+                <div>
+                    <p id="p1">telefon: +381 65-3225-897</p>
+                </div>
+                <div>
+                    <p id="p1">adresa: Desanke Maksimovic 6, 11000 Beograd</p>
+                </div>
+            </div>
+        </section>
+
+        <script src="index.js"></script>
+    </body>
+</html>
