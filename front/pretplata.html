@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="index.html" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="index.html#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="register.html" id="register-btn" onclick="toggleMenu();">REGISTRUJ SE</a></li>
+            </ul>
+        </header>
+        <section class="banner banner-register">
+            <div class="wrap-login100">
+                <div class="login100-pic">
+                    <img src="images/pexels-mathias-pr-reding-4394235.jpg">
+                </div>
+                <form class="login100-form">
+                    <span class="login100-form-title">
+                        Login
+                    </span>
+                    <div class="wrap-input100">
+                        <p class="error" id="error-mail"></p>
+                        <input class="input100 mail-input" type="text" name="email" placeholder="Email / Korisničko ime">
+                    </div>
+                    <div class="wrap-input100">
+                        <p class="error" id="error-password"></p>
+                        <input class="input100 password-input" type="password" name="pass" placeholder="Password">
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <a href="#" onclick="uloguj();" class="btn">ULOGUJ SE</a>
+                    </div>
+                    <div class="nemate-nalog-container">
+                        <a href="register.html">Napravi nalog →</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <script src="index.js"></script>
+        <script src="login.js"></script>
+    </body>
+</html>

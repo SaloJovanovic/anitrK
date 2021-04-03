@@ -7,7 +7,7 @@ async function GetData() {
 
     let kursevi;
     try {
-        kursevi = await axios.get(`/api/kursevi/`);
+        kursevi = await axios.get(`/api/kursevi/ocene`);
         console.log(kursevi);
         RenderCards(kursevi.data.kursevi);
     } catch (err) {
@@ -17,7 +17,7 @@ async function GetData() {
 }
 
 function RenderCards(kursevi){
-    const CardDiv = document.querySelector(".article-container");
+    const CardDiv = document.querySelector(".kursevi-content");
     let cards = "";
     kursevi.forEach(kurs => {
         cards += CreateCard(kurs);

@@ -218,7 +218,7 @@ const storage = multer.diskStorage({
   app.get("/kurs/:id", async (req, res) => {
     try{    
         const id_kursa =  req.params.id;
-        const kurs = kurss.findById(id_kursa);
+        const kurs = await kurss.findById(id_kursa);
         res.json({
             uspesno:true,
             kurs: kurs
@@ -349,7 +349,6 @@ const storage = multer.diskStorage({
         }
     });
 
-<<<<<<< HEAD
     app.post("/kurs/ustanove/dodati", async (req, res) =>{
         try{
             const latlng = req.body.latlng;
@@ -391,25 +390,22 @@ const storage = multer.diskStorage({
         }
 
     });
-=======
-    //Prosecna ocena kursa
-    // app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
-    //     try {
-    //         const id_kursa = req.params.id_kursa;
 
-    //         const kurs = await kurss.findById(id_kursa);
+    app.get("/kurs/ustanove/:id", async (req, res) =>{
+        try{
+            const id = req.params.id;
+            const usta = await ustanova_sema.findById(id);
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
 
-    //         const prosek = kurs.ocena / kurs.broj_ocena;
-
-    //         res.json({
-    //             uspesno: true,
-    //             prosek: prosek
-    //         });
-    //     } catch (err) {
-    //         res.status(404).json({
-    //             uspesno: false,
-    //             poruka: err.message,
-    //         });
-    //     }
-    // });
->>>>>>> 5fa30558f2b686ec749367cde9df7ed21cbc5a74
+    });
