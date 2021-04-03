@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
         <title>Document</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -21,9 +23,73 @@
                 <li><a href="register.html" id="register-btn" onclick="toggleMenu();">REGISTRUJ SE</a></li>
             </ul>
         </header>
+        <section class="banner banner-register">
+            <div class="wrap-login100 kursevi-wrap-login100">
+                <div class="login100-form kursevi-form">
+                    <div class="content kurs-content">
+                        <div class="kurs-container">
+                            <h1>Naziv kursa</h1>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Opis kursa</h2>
+                            <h3>Ovde je opis kursa</h3>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Opis kursa</h2>
+                            <h3>Ovde je opis kursa</h3>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Ocena</h2>
+                            <div class="kurs-container-2x">
+                                <img src="images/star.png">
+                                <h3>3.6</h3>
+                            </div>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Instruktor</h2>
+                            <a>Podaci o instruktoru</a>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Trenutno pretplaćeni</h2>
+                            <h3>4 osobe</h3>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Cena kursa</h2>
+                            <h3>1000 dinara</h3>
+                            <h3>55% ide u humanitarne svrhe</h3>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Sakupljen novac</h2>
+                            <h3>11000 dinara</h3>
+                        </div>
+                        <div class="kurs-container">
+                            <h2>Ustanova / osoba kojoj ide novac</h2>
+                            <div id="mapid"></div>
+                        </div>
+                        <div class="kurs-container">
+                            <a href="#" class="btn">RPETPLATI SE</a>
+                        </div>
+                        <!-- <div class="article-container">
+                            <div class="imgBox">
+                                <img src="images/slika1.png">
+                            </div>
+                            <div class="naslov">
+                                <h3>Programiranje u c#-u</h3>
+                            </div>
+                            <div class="opis">
+                                <p>Predaje profesor sa Matematickog fakulteta</p>
+                            </div>
+                            <a href="#" class="btn">Saznaj Više</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
         <script src="index.js"></script>
+        <script src="kurs.js"></script>
+        <script src="login.js"></script>
     </body>
 </html>

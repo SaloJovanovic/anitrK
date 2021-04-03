@@ -214,7 +214,7 @@ const storage = multer.diskStorage({
   app.get("/kurs/:id", async (req, res) => {
     try{    
         const id_kursa =  req.params.id;
-        const kurs = kurss.findById(id_kursa);
+        const kurs = await kurss.findById(id_kursa);
         res.json({
             uspesno:true,
             kurs: kurs
@@ -375,6 +375,25 @@ const storage = multer.diskStorage({
     app.get("/kurss/ustanove", async (req, res) =>{
         try{
             const usta = await ustanova_sema.find();
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
+
+    app.get("/kurss/ustanove/:id", async (req, res) =>{
+        try{
+            const id = req.params.id;
+            const usta = await ustanova_sema.findById(id);
         
             res.json({
             uspesno:true,
