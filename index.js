@@ -349,49 +349,6 @@ const storage = multer.diskStorage({
         }
     });
 
-<<<<<<< HEAD
-    app.post("/kurs/ustanove/dodati", async (req, res) =>{
-        try{
-            const latlng = req.body.latlng;
-            const ime_ustanove= req.body.ime_ustanove;
-            
-            const usta = new ustanova_Sema({
-                LatLng: latlng,
-                Ime_ustanove: ime_ustanove
-            });
-        
-            res.json({
-            uspesno:true,
-            ustanove: usta
-        });
-        }
-            catch(err){
-            res.status(404).json({
-                uspesno: false,
-                poruka: err.message,
-            });
-        }
-
-    });
-
-    app.get("/kurs/ustanove", async (req, res) =>{
-        try{
-            const usta = await ustanova_sema.find();
-        
-            res.json({
-            uspesno:true,
-            ustanove: usta
-        });
-        }
-            catch(err){
-            res.status(404).json({
-                uspesno: false,
-                poruka: err.message,
-            });
-        }
-
-    });
-=======
     //Prosecna ocena kursa
     // app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
     //     try {
@@ -412,4 +369,3 @@ const storage = multer.diskStorage({
     //         });
     //     }
     // });
->>>>>>> 5fa30558f2b686ec749367cde9df7ed21cbc5a74
