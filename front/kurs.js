@@ -56,6 +56,7 @@ function CreateCard(kurs, usernameInstruktora) {
     const procenat = kurs.procenat_human;
     const sakupljenNovac = kurs.skupljene_pare;
     const ustanovaOsoba = kurs.ustanova_id;
+    const idKursa = kurs._id;
     card = `
     <div class="kurs-container">
         <h1>${naziv}</h1>
@@ -93,10 +94,15 @@ function CreateCard(kurs, usernameInstruktora) {
         <div id="mapid"></div>
     </div>
     <div class="kurs-container">
-        <a href="#" class="btn">RPETPLATI SE</a>
+        <a href="prijavljen.html?id=${idKursa}" onclick="odvedime();" class="btn">RPETPLATI SE</a>
     </div>`
     
     return card;
+}
+
+function odvedime() {
+    window.open(
+        "https://www.paypal.com/rs/signin", "_blank");
 }
 
 // async function Popunjen_i_prijavljen(){

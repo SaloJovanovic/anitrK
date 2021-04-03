@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="index.html" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="index.html#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="register.html" id="register-btn" onclick="toggleMenu();">REGISTRUJ SE</a></li>
+            </ul>
+        </header>
+        <section class="banner banner-register">
+            <div class="wrap-login100 kursevi-wrap-login100">
+                <div class="login100-form kursevi-form">
+                    <div class="login100-form-title kursevi-main">
+                        <div class="wrap-input100 star-wrap-input100">
+                            <!-- <div class="rating">
+                                <span class="star star5"><input onclick="str5Clicked();" type="radio" name="rating" id="str5" class="str5 str" value="5"><label for="str5"></label></span>
+                                <span class="star star4"><input onclick="str4Clicked();" type="radio" name="rating" id="str4" class="str4 str" value="4"><label for="str4"></label></span>
+                                <span class="star star3"><input onclick="str3Clicked();" type="radio" name="rating" id="str3" class="str3 str" value="3"><label for="str3"></label></span>
+                                <span class="star star2"><input onclick="str2Clicked();" type="radio" name="rating" id="str2" class="str2 str" value="2"><label for="str2"></label></span>
+                                <span class="star star1"><input onclick="str1Clicked();" type="radio" name="rating" id="str1" class="str1 str" value="1"><label for="str1"></label></span>
+                            </div> -->
+                        </div>
+                        Svi kursevi
+                        <div class="wrap-input100 pretraga-wrap-input100">
+                            <p class="error" id="ime-error"></p>
+                            <input class="input100 pretraga-input" type="text" placeholder="Pretraga">
+                        </div>
+                    </div>
+                    <div class="content kursevi-content">
+                        <!-- <div class="article-container">
+                            <div class="imgBox">
+                                <img src="images/slika1.png">
+                            </div>
+                            <div class="naslov">
+                                <h3>Programiranje u c#-u</h3>
+                            </div>
+                            <div class="opis">
+                                <p>Predaje profesor sa Matematickog fakulteta</p>
+                            </div>
+                            <a href="#" class="btn">Saznaj Više</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <script src="index.js"></script>
+        <script src="pretplacen.js"></script>
+        <script src="login.js"></script>
+    </body>
+</html>

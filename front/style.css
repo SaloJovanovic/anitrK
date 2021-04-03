@@ -498,7 +498,6 @@ a:hover {
 
 .rating {
     float:left;
-    width:300px;
 }
 .rating span { float:right; position:relative; }
 .rating span input {
@@ -576,4 +575,12 @@ a:hover {
     height: 250px;
     width: 250px;
     padding: 30px;
+}
+
+.forma-forma {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }

@@ -26,45 +26,36 @@
         </header>
         <section class="banner banner-register">
             <div class="wrap-login100 form-container">
-                <form id="login100-form" class="login100-form">
-                    <span class="login100-form-title">
-                        Novi kurs
+                <form id="login100-form" class="forma-forma login100-form">
+                    <!-- <span class="login100-form-title">
+                        Naziv kursa
                     </span>
                     <div class="wrap-input100">
-                        <p class="error" id="naziv-error">Mora da sadrži više od jednog karaktera!</p>
-                        <input class="input100 naziv-kursa-input" type="text" name="naziv" placeholder="Naziv kursa">
+                        <video width="320" height="240" controls>
+                            <source src="uploads/383538535.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="wrap-input100">
-                        <p class="error" id="opis-error">Mora da sadrži više od jednog karaktera!</p>
-                        <input class="input100 opis-kursa-input" type="text" name="deskripcija" placeholder="Opis kursa">
+                        <h2>Opis</h2>
                     </div>
-                    <div class="wrap-input100">
-                        <p class="error" id="cena-error"></p>
-                        <input class="input100 cena-kursa-input" type="text" name="cena" placeholder="Cena kursa u dinarima">
-                    </div>
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="100" value="50" name="procenat" class="slider" id="myRange">
-                        <p>Procenat od zarade koji ide u humanitarne svrhe: <span id="demo"></span></p>
-                    </div>
-                    <div id="mapid"></div>
-                    <div onclick="uploadFile();" class="file wrap-input100">
-                        <p>IZABERI FAJL</p>
-                        <input type="file" id="file" aria-label="File browser example" hidden="hidden">
-                    </div>
-                    <div onclick="uploadFileImage();" class="file wrap-input100">
-                        <p>IZABERI NALOSVNU SLIKU</p>
-                        <input type="file" id="fileImg" aria-label="File browser example" hidden="hidden">
-                    </div>
+                    <p>Ocena</p>
+                        <div class="rating">
+                            <span class="star star5"><input onclick="str5Clicked();" type="radio" name="rating" id="str5" class="str5 str" value="5"><label for="str5"></label></span>
+                            <span class="star star4"><input onclick="str4Clicked();" type="radio" name="rating" id="str4" class="str4 str" value="4"><label for="str4"></label></span>
+                            <span class="star star3"><input onclick="str3Clicked();" type="radio" name="rating" id="str3" class="str3 str" value="3"><label for="str3"></label></span>
+                            <span class="star star2"><input onclick="str2Clicked();" type="radio" name="rating" id="str2" class="str2 str" value="2"><label for="str2"></label></span>
+                            <span class="star star1"><input onclick="str1Clicked();" type="radio" name="rating" id="str1" class="str1 str" value="1"><label for="str1"></label></span>
+                        </div>
                     <div class="container-login100-form-btn">
-                        <a href="#" class="btn" onclick="napraviKurs(event)" class="btn">NAPRAVI KURS</a>
-                    </div>
+                        <a href="#" class="btn" onclick="" class="btn">OCENI KURS</a>
+                    </div> -->
                 </form>
             </div>
         </section>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="novi-kurs.js"></script>
+    <script src="prijavljen.js"></script>
     <script src="index.js"></script>
     </body>
 </html>
