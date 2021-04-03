@@ -38,6 +38,9 @@ const kurs_sema = mongoose.Schema({
     },
     skupljene_pare: {
         type: Number
+    },
+    slikaPath:{
+        type: String,
     }
 });
 

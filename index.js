@@ -5,6 +5,7 @@ const konektujBazu = require("./baza/baza");
 const kurss = require("./baza/Video");
 const profili_sema = require("./baza/Profili");
 const multer = require("multer");
+var fs = require('fs');
 
 const PORT = process.env.PORT || 3000;
 const hostname = '0.0.0.0';
@@ -130,28 +131,42 @@ const storage = multer.diskStorage({
       cb(null, "uploads/")
     },
     filename: (req, file, cb) =>{
-        const ime_fajla = Date.now() + "-" + file.originalname;
-        req.body.ime_fajla = ime_fajla;
-        cb(null, ime_fajla)
-            
+        if(file.fieldname === "file"){
+            const ime_fajla = Date.now() + "-" + file.originalname;
+            cb(null, ime_fajla)
+            console.log(ime_fajla)
+            req.body.ime_fajla = ime_fajla;
+        }
+        else{
+            const ime_fajla = Date.now() + "-" + file.originalname;
+            cb(null, ime_fajla)
+            console.log(ime_fajla)
+            req.body.ime_slike = ime_fajla;     
+        }
     },
   })
   
   const uploadStorage = multer({ storage: storage })
-  
-  app.post("/upload/kurs", uploadStorage.single("file"), async (req, res) => {
+
+  var cpUpload = uploadStorage.fields([{ name: 'file', maxCount: 1 }, { name: 'slika', maxCount: 1 }])
+
+  app.post("/upload/kurs",cpUpload,   async (req, res) => {
     try {
+        console.log("tu sam");
         const naziv = req.body.naziv;
         const id_instruktora = req.body.id_instruktora;
         const deskripcija = req.body.deskripcija;
-        const filePath = req.body.ime_fajla;
         const cena = req.body.cena;
         const broj_pretplacenih = 0;
         const ocena = 0;
         const broj_ocena = 0;
-        const korisnici_ocenjeni = req.body.korisnici_ocenjeni;
+        const korisnici_ocenjeni = [];
+        const filePath = req.body.ime_fajla;
         const skupljene_pare = 0;
         const procenat = req.body.procenat;
+        const slikaPath = req.body.ime_slike;
+        console.log(filePath);
+        console.log(slikaPath);
         const NoviKurs = new kurss({
             naziv: naziv,
             id_instruktora: id_instruktora,
@@ -163,9 +178,10 @@ const storage = multer.diskStorage({
             broj_ocena: broj_ocena,
             korisnici_ocenjeni: korisnici_ocenjeni,
             procenat_human: procenat,
-            skupljene_pare: skupljene_pare
+            skupljene_pare: skupljene_pare,
+            slikaPath: slikaPath
         });
-        
+        console.log("ovde")
         const noviKursSacuvan = await NoviKurs.save();
         
         res.json({
