@@ -29,9 +29,9 @@ let coordinates;
             res2[1] = res2[1].replace(")", "");
             var lat3 = parseFloat(res2[0])
             var lng3 = parseFloat(res2[1])
-        var marker = L.marker([lng1, lat1]).addTo(mymap).on('click', onClick);;
-        var marker = L.marker([lng2, lat2]).addTo(mymap).on('click', onClick);;
-        var marker = L.marker([lng3, lat3]).addTo(mymap).on('click', onClick);;
+        var marker = L.marker([lng1, lat1]).addTo(mymap).on('click', onClick).bindPopup("<b>Crveni krst</b>").openPopup();;;
+        var marker = L.marker([lng2, lat2]).addTo(mymap).on('click', onClick).bindPopup("<b>Bolnica Beograd</b>").openPopup();;
+        var marker = L.marker([lng3, lat3]).addTo(mymap).on('click', onClick).bindPopup("<b>Skola Beograd</b>").openPopup();;
 
         var popup = L.popup();
 
