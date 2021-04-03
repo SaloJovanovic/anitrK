@@ -1,6 +1,14 @@
+var ime_ustanova;
+async function Mappa(){
 var mymap = L.map('mapid').setView([44.787197, 20.457273], 9);
 var s;
-
+const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    console.log(id);
+const kursp = await axios.get(`/kurs/${id}`);
+console.log(kursp);
+const ustanova= await axios.get(`/kurss/ustanove/${kursp.data.kurs.ustanova_id}`);
+ime_ustanova = ustanova.data.ustanove.Ime_ustanove;
         L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -9,16 +17,22 @@ var s;
             zoomOffset: -1,
             accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
         }).addTo(mymap);
-
-        var marker = L.marker([44.787197, 20.457273]).addTo(mymap);
-
+        console.log(ustanova);
+        var mesto = ustanova.data.ustanove.LatLng;
+        console.log(mesto);
+        var res2 = mesto.split(", ");
+            res2[0] = res2[0].replace("(", "");
+            res2[1] = res2[1].replace(")", "");
+            var lat3 = parseFloat(res2[0])
+            var lng3 = parseFloat(res2[1])
+        var marker = L.marker([lng3, lat3]).addTo(mymap)
+    }
+    Mappa();
 GetData();
-
 async function GetData() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     console.log(id);
-
     let kurs;
     let usernameInstruktoraPom;
     try {
@@ -40,14 +54,14 @@ function RenderCards(kurs, usernameInstruktora) {
     const cardsDiv = document.querySelector(".kurs-content");
     let cards = "";
     cards += CreateCard(kurs, usernameInstruktora);
-
+    
     console.log("ALO BRE");
     console.log(cards);
     console.log(kurs);
     cardsDiv.innerHTML = cards;
 }
 
-function CreateCard(kurs, usernameInstruktora) {
+function CreateCard(kurs, usernameInstruktora, ustanova) {
     const naziv = kurs.naziv;
     const opis = kurs.deskripcija;
     const ocena = kurs.ocena;
@@ -57,6 +71,7 @@ function CreateCard(kurs, usernameInstruktora) {
     const sakupljenNovac = kurs.skupljene_pare;
     const ustanovaOsoba = kurs.ustanova_id;
     const idKursa = kurs._id;
+    const 
     card = `
     <div class="kurs-container">
         <h1>${naziv}</h1>
@@ -90,13 +105,10 @@ function CreateCard(kurs, usernameInstruktora) {
         <h3>${sakupljenNovac} dinara</h3>
     </div>
     <div class="kurs-container">
-        <h2>Ustanova / osoba kojoj ide novac</h2>
-        <div id="mapid"></div>
-    </div>
-    <div class="kurs-container">
-        <a href="prijavljen.html?id=${idKursa}" onclick="odvedime();" class="btn">RPETPLATI SE</a>
+        <a href="prijavljen.html?id=${idKursa}" onclick="odvedime();" class="btn">PRETPLATI SE</a>
     </div>`
     
+    Mappa();
     return card;
 }
 
