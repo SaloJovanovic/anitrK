@@ -228,7 +228,7 @@ const storage = multer.diskStorage({
     }
 });
     //Pretplata kursa
-    app.post("/kurs/:id_kursa/:id_coveka", async (req, res) => {
+    app.post("/kurs/pretplata/:id_kursa/:id_coveka", async (req, res) => {
         try{
             const id_kurs = req.params.id_kursa;
             const id_cok = req.params.id_coveka;
@@ -236,7 +236,11 @@ const storage = multer.diskStorage({
             const kurs = await kurss.findById(id_kurs);
 
             kurs.broj_pretplacenih++;
-            kurs.skupljene_pare=kurs.skupljene_pare + (kurs.cena * kurs.procenat /100);
+            let cena = kurs.cena;
+            let procenat = kurs.procenat_human;
+
+            const josPara = kurs.skupljene_pare + (cena * (procenat / 100));
+            kurs.skupljene_pare = josPara;
 
             const profili = await profili_sema.findById(id_cok);
 
