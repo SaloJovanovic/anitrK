@@ -14,6 +14,10 @@ function uploadFile() {
     document.querySelector('#file').click();
 }
 
+function uploadFileImage() {
+    document.querySelector('#fileImg').click();
+}
+
 async function napraviKurs(event) {
     document.querySelector("#naziv-error").classList.remove('visible');
     document.querySelector("#opis-error").classList.remove('visible');
@@ -24,6 +28,7 @@ async function napraviKurs(event) {
     const cena = document.querySelector("[name=cena]").value;
     const procenat = document.querySelector("[name=procenat]").value;
     const file = document.querySelector("#file").files[0];
+    const fileSlika = document.querySelector("#fileImg").files[0];
     const id_instruktora = Cookies.get("log_id");
 
     let moze = true;
@@ -54,11 +59,12 @@ async function napraviKurs(event) {
     
     let formData = new FormData();
     formData.append("file", file);
+    formData.append("slika", fileSlika);
     formData.append("naziv", naziv);
     formData.append("deskripcija", deskripcija);
     formData.append("cena", cena);
     formData.append("id_instruktora", id_instruktora);
-    formData.append("procenat_human", procenat);
+    formData.append("procenat", procenat);
 
     if (moze) {
         let sviPodaci = 
@@ -67,7 +73,7 @@ async function napraviKurs(event) {
             id_instruktora,
             deskripcija,
             cena,
-            procenat_human: procenat
+            procenat: procenat
         }
         console.log(sviPodaci);
         try {

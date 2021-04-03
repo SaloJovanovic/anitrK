@@ -218,7 +218,7 @@ const storage = multer.diskStorage({
   app.get("/kurs/:id", async (req, res) => {
     try{    
         const id_kursa =  req.params.id;
-        const kurs = kurss.findById(id_kursa);
+        const kurs = await kurss.findById(id_kursa);
         res.json({
             uspesno:true,
             kurs: kurs
@@ -349,23 +349,63 @@ const storage = multer.diskStorage({
         }
     });
 
-    //Prosecna ocena kursa
-    // app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
-    //     try {
-    //         const id_kursa = req.params.id_kursa;
+    app.post("/kurs/ustanove/dodati", async (req, res) =>{
+        try{
+            const latlng = req.body.latlng;
+            const ime_ustanove= req.body.ime_ustanove;
+            
+            const usta = new ustanova_Sema({
+                LatLng: latlng,
+                Ime_ustanove: ime_ustanove
+            });
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
 
-    //         const kurs = await kurss.findById(id_kursa);
+    });
 
-    //         const prosek = kurs.ocena / kurs.broj_ocena;
+    app.get("/kurs/ustanove", async (req, res) =>{
+        try{
+            const usta = await ustanova_sema.find();
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
 
-    //         res.json({
-    //             uspesno: true,
-    //             prosek: prosek
-    //         });
-    //     } catch (err) {
-    //         res.status(404).json({
-    //             uspesno: false,
-    //             poruka: err.message,
-    //         });
-    //     }
-    // });
+    });
+
+    app.get("/kurs/ustanove/:id", async (req, res) =>{
+        try{
+            const id = req.params.id;
+            const usta = await ustanova_sema.findById(id);
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
