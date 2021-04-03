@@ -410,21 +410,21 @@ const storage = multer.diskStorage({
     });
 
     //trazernje preko latlng-a
-    app.get("/kurss/ustanove", async (req, res) =>{
+    app.get("/kurss/ustanove/trazenje/latlng", async (req, res) =>{
         try{
             const latlng = req.body.latlng;
             const usta = await ustanova_sema.find();
-
+            var ustanovaa = 5;
             for (let i = 0; i < usta.length; i++) {
-                if (usta.LatLng == latlng) {
-                    var ustanova = usta._id;
+                if (usta[i].LatLng == latlng) {
+                    ustanovaa = usta[i]._id;
                     break;
                 }
             }
         
             res.json({
             uspesno:true,
-            ustanove: ustsanova
+            ustanove: ustanovaa
         });
         }
             catch(err){
