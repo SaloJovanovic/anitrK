@@ -100,9 +100,15 @@ function CreateCard(kurs, usernameInstruktora) {
     return card;
 }
 
-function odvedime() {
+async function odvedime() {
     window.open(
         "https://www.paypal.com/rs/signin", "_blank");
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    const idCoveka = Cookies.get('log_id');
+    console.log(id + "\n" + idCoveka);
+    await axios.post(`/kurs/pretplata/${id}/${idCoveka}`);
+
 }
 
 // async function Popunjen_i_prijavljen(){
