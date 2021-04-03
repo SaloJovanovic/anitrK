@@ -128,7 +128,7 @@ app.get("/api/kursevi", async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "uploads/")
+      cb(null, "front/uploads/")
     },
     filename: (req, file, cb) =>{
         if(file.fieldname === "file"){
