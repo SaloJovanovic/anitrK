@@ -126,3 +126,5 @@ function str1Clicked() {
         element.classList.add('clicked');
     });
 }
+
+const pretragaInp = document.querySelector('#pretraga-input');
