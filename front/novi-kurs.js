@@ -1,4 +1,5 @@
 var mesto= "";
+var ustanova_id= "";
 async function mapaa(){
 var mymap = L.map('mapid').setView([44.787197, 20.457273], 9);
 var s;
@@ -37,13 +38,24 @@ let coordinates;
 
 function onClick(e) {
     console.log("Kliknuo si");
-    var res2 = ustanovee.data.ustanove[2].LatLng.split(", ");            res2[0] = res2[0].replace("(", "");
-        res2[1] = res2[1].replace(")", "");
-        var lat3 = parseFloat(res2[0])
-        var lng3 = parseFloat(res2[1])
     coordinates = e.latlng.toString();
-    console.log(coordinates);
     mesto = coordinates.split("LatLng")[1];
+    var resp = mesto.split(", ");           
+    resp[0] = resp[0].replace("(", "");
+    resp[1] = resp[1].replace(")", "");
+    mesto = "(" + resp[1] +", "+resp[0]+")";
+    if(mesto == ustanovee.data.ustanove[0].LatLng){
+        ustanova_id = ustanovee.data.ustanove[0]._id;
+    }
+    
+    if(mesto == ustanovee.data.ustanove[1].LatLng){
+        ustanova_id = ustanovee.data.ustanove[1]._id;
+    }
+    
+    if(mesto == ustanovee.data.ustanove[2].LatLng){
+        ustanova_id = ustanovee.data.ustanove[2]._id;
+    }
+    console.log(coordinates);
     console.log(mesto);
 }
 }
@@ -67,18 +79,16 @@ function uploadFile() {
 function uploadFileImage() {
     document.querySelector('#fileImg').click();
 }
-console.log("mesto izvna kuras")
-console.log(mesto);
 async function napraviKurs(event) {
-    let Podaci = new FormData();
-    Podaci.append("latlng", mesto);
-    console.log("u kursu")
-    console.log(mesto);
-    let SviPodaci = {
-        latlng: mesto,
-    }
-    const ustanova = await axios.get(`/kurss/ustanove/trazenje/latlng`, SviPodaci);
-    console.log(ustanova);
+    // let Podaci = new FormData();
+    // Podaci.append("latlng", mesto);
+    // console.log("u kursu")
+    // console.log(mesto);
+    // let SviPodaci = {
+    //     latlng: mesto,
+    // }
+    // const ustanova = await axios.get(`/kurss/ustanove/trazenje/latlng`, SviPodaci);
+    // console.log(ustanova);
     // console.log(ustanova_id);
     document.querySelector("#naziv-error").classList.remove('visible');
     document.querySelector("#opis-error").classList.remove('visible');
@@ -126,7 +136,7 @@ async function napraviKurs(event) {
     formData.append("cena", cena);
     formData.append("id_instruktora", id_instruktora);
     formData.append("procenat", procenat);
-    formData.append("ustanova_id", ustanova_id._id);
+    formData.append("ustanova_id", ustanova_id);
 
     if (moze) {
         let sviPodaci = 
