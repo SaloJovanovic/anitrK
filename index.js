@@ -109,9 +109,26 @@ app.post("/api/profili/dodaj", async (req, res) => {
 //KURS
 
 //Ispis svih kruseva (sortirano po oceni)
-app.get("/api/kursevi", async (req, res) => {
+app.get("/api/kursevi/ocene", async (req, res) => {
     try {
         const kursevi = await kurss.find().sort({ocena: -1});
+
+        res.json({
+            uspesno: true,
+            kursevi: kursevi
+        });
+    } catch (err) {
+        res.status(404).json({
+            uspesno: false,
+            poruka: err.message
+        });
+    }
+});
+
+//Ispis svih kruseva (sortirano po broju pretplacenih)
+app.get("/api/kursevi/pretplaceni", async (req, res) => {
+    try {
+        const kursevi = await kurss.find().sort({broj_pretplacenih: -1});
 
         res.json({
             uspesno: true,
@@ -256,8 +273,9 @@ const storage = multer.diskStorage({
             const kurs = await kurss.findById(id_kurs);
 
             let ocena = req.body.ocena;
-
-            kurs.data.ocena = (kurs.data.ocena * kurs.data.broj_pretplacenih + ocena) / (kurs.data.broj_pretplacenih+1);
+            const novaOcena = ((kurs.ocena * kurs.broj_ocena) + ocena) / (kurs.broj_ocena + 1);
+            kurs.ocena = novaOcena;
+            kurs.broj_ocena++;
             
             kurs.korisnici_ocenjeni.push(id_cok);
 
@@ -331,6 +349,7 @@ const storage = multer.diskStorage({
         }
     });
 
+<<<<<<< HEAD
     app.post("/kurs/ustanove/dodati", async (req, res) =>{
         try{
             const latlng = req.body.latlng;
@@ -372,3 +391,25 @@ const storage = multer.diskStorage({
         }
 
     });
+=======
+    //Prosecna ocena kursa
+    // app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
+    //     try {
+    //         const id_kursa = req.params.id_kursa;
+
+    //         const kurs = await kurss.findById(id_kursa);
+
+    //         const prosek = kurs.ocena / kurs.broj_ocena;
+
+    //         res.json({
+    //             uspesno: true,
+    //             prosek: prosek
+    //         });
+    //     } catch (err) {
+    //         res.status(404).json({
+    //             uspesno: false,
+    //             poruka: err.message,
+    //         });
+    //     }
+    // });
+>>>>>>> 5fa30558f2b686ec749367cde9df7ed21cbc5a74
