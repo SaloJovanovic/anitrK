@@ -14,17 +14,10 @@ var s;
             accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
         }).addTo(mymap);
 
-        var marker = L.marker([44.787197, 20.457273]).addTo(mymap);
-
-        var popup = L.popup();
 
         function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(mymap);
-                console.log(e.latlng.toString());
                 s = e.latlng.toString();
+                console.log(s);
         }
         mymap.on('click', onMapClick);
 
