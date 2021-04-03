@@ -9,29 +9,30 @@
     </head>
     <body>
         <header>
-            <a id="logo" href="#" class="logo">
+            <a id="logo" href="index.html" class="logo">
                 <img class="logo-img" src="images/logo-colorful.png">
             </a>
             <div class="menuToggle" onclick="toggleMenu();"></div>
             <ul class="navigation">
-                <li><a href="#banner" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
                 <li><a id="kursevi" onclick="toggleNav();">Kursevi ᐯ</a></li>
                 <div class="sub-nav-container">
                     <li class="sub-nav"><a href="novi-kurs.html">Napravi kurs</a></li>
                     <li class="sub-nav"><a href="kursevi.html">Svi kursevi</a></li>
+                    <li class="sub-nav"><a href="pretplacen.html">Tvoji kursevi</a></li>
                 </div>
-                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
-                <li><a href="#" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="index.html#onama" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="kontakt.html" onclick="toggleMenu();">Kontakt</a></li>
                 <li><p id="username-p"></p></li>
                 <li><a href="#" id="register-btn" onclick="ulogujSe()">ULOGUJ SE</a></li>
             </ul>
         </header>
         <section class="banner" id="banner">
-            <div class="content">
+            <div class="content contact">
                 <img id="banner-logo" src="images/logo-blank.png">
                 <h2>Kontakt</h2>
                 <div>
-                    <p id="p1">e-mail: naucipomozi@gmail.com</p>
+                    <a href="mailto:nacuipomozi@gmail.com" id="p1">e-mail: naucipomozi@gmail.com</a>
                 </div>
                 <div>
                     <p id="p1">telefon: +381 65-3225-897</p>

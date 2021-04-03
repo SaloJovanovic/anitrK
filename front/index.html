@@ -21,8 +21,8 @@
                     <li class="sub-nav"><a href="kursevi.html">Svi kursevi</a></li>
                     <li class="sub-nav"><a href="pretplacen.html">Tvoji kursevi</a></li>
                 </div>
-                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
-                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="#onama" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="kontakt.html" onclick="toggleMenu();">Kontakt</a></li>
                 <li><p id="username-p"></p></li>
                 <li><a href="#" id="register-btn" onclick="ulogujSe()">ULOGUJ SE</a></li>
             </ul>
@@ -30,33 +30,56 @@
         <section class="banner" id="banner">
             <div class="content">
                 <img id="banner-logo" src="images/logo-blank.png">
-                <h2>Svako mora biti vrednovan</h2>
-                <p id="p1">Od školske 2004/2005. godine svaka upisna godina ima 9 odeljenja: 4 prirodno-matematička, 4 društveno-jezička i 1 bilingvalno. 
-                    U bilingvalnim odeljenjima nastava se obavlja na dva jezika, na italijanskom ili francuskom jeziku i srpskom jeziku. 
-                    Za pohađanje nastave u bilingvalnom odeljenju prethodno se mora položiti prijemni ispit iz italijanskog ili 
-                    francuskog jezika.</p>
-                <a href="#articles" class="btn">Saznaj više</a>
+                <h2 style="font-size: 7em !important;">Znanje za život</h2>
+                <p id="p1">Humanitarnost je pogled na svet, filozofija, praksa koja veruje da su ljudi od primarnog značaja i koja je fokusirana na ljudske vrednosti i brige. Humanitarnost je aktivan odnos prema ljudskim vrednostima, posebno prema drugim ljudima. „Junaštvo je da sačuvaš sebe od drugog, a čojstvo da sačuvaš druge od sebe“.</p>
+                <a href="#onama" class="btn">Saznaj više</a>
             </div>
         </section>
 
-        <section class="kursevi" id="kursevi">
-            <div class="content kursevi-content">
-                <!-- <div class="article-container">
-                    <div class="imgBox">
-                        <img src="images/slika1.png">
-                    </div>
-                    <div class="naslov">
-                        <h3>Programiranje u c#-u</h3>
-                    </div>
-                    <div class="opis">
-                        <p>Predaje profesor sa Matematickog fakulteta</p>
-                    </div>
-                    <a href="#" class="btn">Saznaj Više</a>
-                </div> -->
+        <section class="onama" id="onama">
+            <div class="content">
+                <p style="font-size: 1.5em;">Znanje za život je neprofitna organizacija koja ima za cilj da poveže sve ljude dobre volje i ujedini ih u borbi za jednakost. Naša platforma omogućava ljudima da prošire svoje znanje iz najrazličitijih oblasti gledajući visokokvalitetne kurseve i predavanja. Sa druge strani predavači imaju mogućnost da pomognu ugroženim ljudima tako što će jedan deo prihoda (koji oni izaberu, a minimun 30%) donirati u humanitarne svrhe. Svi članovi naše platforme imaju stalan uvid u to koliko sredstava je donirano i kome je donirano kako bi bili sigurni da sredstva idu u prave ruke.
+
+                    Biti human ne znači biti bogat, dovoljno je biti dobar</p>
             </div>
             <a href="#" id="novi-kurs-btn" class="btn">POGLEDAJ SVE KURSEVE</a>
         </section>
 
+        <footer>
+            <div class="contact">
+                <a href="https://www.facebook.com/fonis.rs/">
+                    <img src="images/facebook.png">
+                </a>
+                <a href="https://twitter.com/fonis_fon">
+                    <img src="images/twitter.png">
+                </a>
+                <a href="https://www.instagram.com/hakaton_za_srednjoskolce/?hl=en">
+                    <img src="images/instagram.png">
+                </a>
+                <a href="https://www.youtube.com/user/FonisFON">
+                    <img src="images/youtube.png">
+                </a>
+            </div>
+            <div class="nav-items">
+                <div class="nav-item">
+                    <a href="index.html">POČETNA</a>
+                </div>
+                <div class="nav-item">
+                    <a href="dogadjaji.html">KURSEVI</a>
+                </div>
+                <div class="nav-item">
+                    <a href="pravi_dog.html">O NAMA</a>
+                </div>
+                <div class="nav-item">
+                    <a href="moji-dogadjaji.html">KONTAKT</a>
+                </div>
+            </div>
+            <div class="copyright-container">
+                <div class="copyright">
+                    <p>Copyright &#169; 2021 <a href="#">anitrK</a>. Sva prava rezervisana.</p>
+                </div>
+            </div>
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
         <script src="index.js"></script>

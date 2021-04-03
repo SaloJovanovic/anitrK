@@ -17,11 +17,16 @@
             <div class="menuToggle" onclick="toggleMenu();"></div>
             <ul class="navigation">
                 <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
-                <li><a href="index.html#kursevi" onclick="toggleMenu();">Kursevi</a></li>
-                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
-                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a id="kursevi" onclick="toggleNav();">Kursevi ᐯ</a></li>
+                <div class="sub-nav-container">
+                    <li class="sub-nav"><a href="novi-kurs.html">Napravi kurs</a></li>
+                    <li class="sub-nav"><a href="kursevi.html">Svi kursevi</a></li>
+                    <li class="sub-nav"><a href="pretplacen.html">Tvoji kursevi</a></li>
+                </div>
+                <li><a href="index.html#onama" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="kontakt.html" onclick="toggleMenu();">Kontakt</a></li>
                 <li><p id="username-p"></p></li>
-                <li><a href="login.html" id="register-btn" onclick="toggleMenu();">ULOGUJ SE</a></li>
+                <li><a href="#" id="register-btn" onclick="ulogujSe()">ULOGUJ SE</a></li>
             </ul>
         </header>
         <section class="banner banner-register">

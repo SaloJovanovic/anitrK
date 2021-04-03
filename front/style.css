@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 html{
+    --tripkove-boje-1: #E8A87C;
+    --tripkove-boje-4: #DAAD86;
+    --tripkove-boje-5: #501B1D;
+    --header-color: #575b66;
+    --footer-color: #45474e;
+    --pozadine: #fff;
+    --bg-color: #EEF5DB;
+    --accent-color: rgb(77, 9, 9);
+    --accent-color-2: rgb(48, 6, 6);
+    --footer-text:rgb(128, 52, 52);
     --back2: #c1c8e4;
     --back1: #84ceeb;
     --back3: #5ae9ea;
@@ -11,8 +23,14 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
+}
+
+footer .contact {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
 }
 
 .banner {
@@ -437,7 +455,7 @@ button:hover {
 .sub-nav-container {
     display: none;
     position: absolute;
-    margin-top: 130px;
+    margin-top: 180px;
     margin-left: 82px;
 }
 
@@ -583,4 +601,102 @@ a:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.kurss {
+    display: none;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.contact div {
+    margin: 10px;
+}
+
+.contact p, .contact a {
+    color: var(--accent2) !important;
+}
+
+.kurss.visible {
+    display: flex;
+}
+
+footer{
+    background-image: linear-gradient(to right, var(--accent2), var(--accent1));
+    width: 100%;
+    min-height: 100px;
+    align-items: center;
+    display:flex;
+}
+
+footer{
+    background-color: var(--footer-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .contact {
+    margin-top: 20px;
+}
+
+footer .contact a {
+    margin: 5px;
+}
+
+footer .contact a img {
+    width: 50px;
+
+    transition: transform 0.25s;
+}
+
+footer .contact a img:hover {
+    
+    transform: translateY(-7px);
+}
+
+footer .nav-items {
+    display: flex;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer .nav-items a {
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+
+    transition: all 0.25s ease;
+}
+
+footer .nav-items a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+footer .copyright-container {
+    display: flex;
+}
+
+footer .copyright {
+    display: flex;
+    color: white;
+}
+
+footer .copyright a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+footer .contact {
+    display: flex !important;
+    flex-direction: row !important;
 }

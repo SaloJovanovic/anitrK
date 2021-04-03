@@ -45,7 +45,7 @@ function CreateCard(kurs) {
     <div class="opis">
         <p>${deskripcija}</p>
     </div>
-    <a href="kurs.html?id=${idKursa}" class="btn">Saznaj Više</a>
+    <a href="prijavljen.html?id=${idKursa}" class="btn">Saznaj Više</a>
     </div>`;
     
     return card;

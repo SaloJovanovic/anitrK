@@ -31,9 +31,7 @@ function CreateCard(kurs) {
     const procenat_human = kurs.procenat_human;
     const slikaPath = kurs.slikaPath;
     const idKursa = kurs._id;
-    console.log(slikaPath);
-    console.log(`images/${slikaPath}`);
-    let card = `<div class="article-container">
+    let card = `<div class="article-container kurss visible" data-kurs="kurs" id="${naziv}">
     <div class="imgBox">
         <img src="uploads/${slikaPath}">
     </div>
@@ -67,16 +65,47 @@ function CreateCard(kurs) {
 //     }
 // });
 
-function str5Clicked() {
-    const stars = [...document.getElementsByClassName('star')];
-    stars.forEach(element => {
-        element.classList.remove('clicked');
+const pretragaInp = document.querySelector('#pretraga-input');
+
+function Search() {
+    var kursevi = document.querySelectorAll('[data-kurs=kurs]');
+    var inp = pretragaInp.value;
+    console.log(kursevi);
+    
+    kursevi.forEach(kurs => {
+        inp = inp.trim();
+        if(kurs.id.toLowerCase().includes(inp.toLowerCase())) {
+            kurs.classList.add('visible');
+        }
+        else {
+            kurs.classList.remove('visible');
+        }
     });
-    stars.forEach(element => {
-        element.classList.add('clicked');
-    });
+    // for (let i = 0; i < kursevi.length; i++) {
+    //     console.log("i");
+    //     if (pretragaInp.value == "") {
+    //         kursevi[i].classList.add('visible');
+    //     }
+    //     else if (kursevi[i].contains(inp)) {
+    //         kursevi[i].classList.add('visible');
+    //     }
+    //     else {
+    //         kursevi[i].classList.remove('visible');
+    //     }
+    // }
 }
 
+// function str5Clicked() {
+//     const stars = [...document.getElementsByClassName('star')];
+//     stars.forEach(element => {
+//         element.classList.remove('clicked');
+//     });
+//     stars.forEach(element => {
+//         element.classList.add('clicked');function Search() {
+//             pretragaInp
+//         }
+//     }
+// }
 function str4Clicked() {
     const stars = [...document.getElementsByClassName('star')];
     stars.forEach(element => {
@@ -126,5 +155,3 @@ function str1Clicked() {
         element.classList.add('clicked');
     });
 }
-
-const pretragaInp = document.querySelector('#pretraga-input');
