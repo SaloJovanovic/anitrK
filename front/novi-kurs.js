@@ -64,7 +64,7 @@ async function napraviKurs(event) {
     formData.append("deskripcija", deskripcija);
     formData.append("cena", cena);
     formData.append("id_instruktora", id_instruktora);
-    formData.append("procenat_human", procenat);
+    formData.append("procenat", procenat);
 
     if (moze) {
         let sviPodaci = 
@@ -73,7 +73,7 @@ async function napraviKurs(event) {
             id_instruktora,
             deskripcija,
             cena,
-            procenat_human: procenat
+            procenat: procenat
         }
         console.log(sviPodaci);
         try {
