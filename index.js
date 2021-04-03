@@ -5,6 +5,7 @@ const konektujBazu = require("./baza/baza");
 const kurss = require("./baza/Video");
 const profili_sema = require("./baza/Profili");
 const multer = require("multer");
+const ustanova_sema = require("./baza/ustanova");
 var fs = require('fs');
 
 const PORT = process.env.PORT || 3000;
@@ -165,8 +166,7 @@ const storage = multer.diskStorage({
         const skupljene_pare = 0;
         const procenat = req.body.procenat;
         const slikaPath = req.body.ime_slike;
-        console.log(filePath);
-        console.log(slikaPath);
+        const ustanova_id = req.body.ustanova_id;
         const NoviKurs = new kurss({
             naziv: naziv,
             id_instruktora: id_instruktora,
@@ -179,7 +179,8 @@ const storage = multer.diskStorage({
             korisnici_ocenjeni: korisnici_ocenjeni,
             procenat_human: procenat,
             skupljene_pare: skupljene_pare,
-            slikaPath: slikaPath
+            slikaPath: slikaPath,
+            ustanova_id: ustanova_id
         });
         console.log("ovde")
         const noviKursSacuvan = await NoviKurs.save();
@@ -328,4 +329,46 @@ const storage = multer.diskStorage({
                 poruka: err.message,
             });
         }
+    });
+
+    app.post("/kurs/ustanove/dodati", async (req, res) =>{
+        try{
+            const latlng = req.body.latlng;
+            const ime_ustanove= req.body.ime_ustanove;
+            
+            const usta = new ustanova_Sema({
+                LatLng: latlng,
+                Ime_ustanove: ime_ustanove
+            });
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
+
+    app.get("/kurs/ustanove", async (req, res) =>{
+        try{
+            const usta = await ustanova_sema.find();
+        
+            res.json({
+            uspesno:true,
+            ustanove: usta
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
     });

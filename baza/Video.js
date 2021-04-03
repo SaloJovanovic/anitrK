@@ -41,6 +41,10 @@ const kurs_sema = mongoose.Schema({
     },
     slikaPath:{
         type: String,
+    },
+    ustanov_id: {
+        type: String,
+        require : false,
     }
 });
 
