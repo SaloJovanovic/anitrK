@@ -432,3 +432,33 @@ cursor: pointer;
 button:hover {
     cursor: pointer;
 }
+
+.sub-nav-container {
+    display: none;
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 82px;
+}
+
+.sub-nav-container.visible {
+    display: block;
+}
+
+.sub-nav {
+    background-image: linear-gradient(to right, var(--accent2), var(--accent1));
+    padding: 10px;
+}
+
+header.sticky .sub-nav {
+    /* background-image: linear-gradient(to right, var(--back1), var(--back2)); */
+    background-image: none;
+    background-color: #fff;
+}
+
+.sub-nav a:hover {
+    color: var(--back1) !important;
+}
+
+a:hover {
+    cursor: pointer;
+}

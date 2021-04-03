@@ -32,3 +32,15 @@ function ulogujSe() {
         window.location = "login.html";
     }
 }
+
+function toggleNav() {
+    const subNavContainer = document.querySelector(".sub-nav-container");
+    const kursevi = document.querySelector("#kursevi");
+    if (subNavContainer.classList.contains('visible')) {
+        kursevi.innerHTML = "Kursevi ᐯ";
+    }
+    else {
+        kursevi.innerHTML = "Kursevi ᐱ";
+    }
+    subNavContainer.classList.toggle('visible');
+}

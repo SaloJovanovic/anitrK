@@ -10,6 +10,9 @@ const kurs_sema = mongoose.Schema({
     deskripcija :{
         type: String,
     },
+    naslovnaFilePath : {
+        type: String,
+    },
     filePath : {
         type: String,
     },

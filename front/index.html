@@ -15,7 +15,11 @@
             <div class="menuToggle" onclick="toggleMenu();"></div>
             <ul class="navigation">
                 <li><a href="#banner" onclick="toggleMenu();">Početna</a></li>
-                <li><a href="#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a id="kursevi" onclick="toggleNav();">Kursevi ᐯ</a></li>
+                <div class="sub-nav-container">
+                    <li class="sub-nav"><a href="novi-kurs.html">Napravi kurs</a></li>
+                    <li class="sub-nav"><a href="#svi-kursevi">Svi kursevi</a></li>
+                </div>
                 <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
                 <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
                 <li><p id="username-p"></p></li>
@@ -61,7 +65,7 @@
 
                 </div>
             </div>
-            <a href="novi-kurs.html" id="novi-kurs-btn" class="btn">NAPRAVI SVOJ KURS</a>
+            <a href="#" id="novi-kurs-btn" class="btn">POGLEDA SVE KURSEVE</a>
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
