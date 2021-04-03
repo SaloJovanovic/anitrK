@@ -335,7 +335,6 @@ const storage = multer.diskStorage({
         for(let i=0;i<profili.id_casova.length;i++){
             kurs.push(await kurss.findById(profili.id_casova[i]));
         }
-        kurs = kurs.sort({ocena: -1});
         res.json({
             uspesno:true,
             kursevi: kurs
