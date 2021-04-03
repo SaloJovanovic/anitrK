@@ -6,7 +6,6 @@ const kurss = require("./baza/Video");
 const profili_sema = require("./baza/Profili");
 const multer = require("multer");
 const ustanova_sema = require("./baza/ustanova");
-var fs = require('fs');
 
 const PORT = process.env.PORT || 3000;
 const hostname = '0.0.0.0';
@@ -23,7 +22,6 @@ konektujBazu();
 
 //Povezivanje sa frontom
 app.use(express.static("front"));
-
 
 //PROFILI
 
@@ -170,7 +168,6 @@ const storage = multer.diskStorage({
 
   app.post("/upload/kurs",cpUpload,   async (req, res) => {
     try {
-        console.log("tu sam");
         const naziv = req.body.naziv;
         const id_instruktora = req.body.id_instruktora;
         const deskripcija = req.body.deskripcija;
@@ -199,7 +196,6 @@ const storage = multer.diskStorage({
             slikaPath: slikaPath,
             ustanova_id: ustanova_id
         });
-        console.log("ovde")
         const noviKursSacuvan = await NoviKurs.save();
         
         res.json({
@@ -349,20 +345,22 @@ const storage = multer.diskStorage({
         }
     });
 
-<<<<<<< HEAD
-    app.post("/kurs/ustanove/dodati", async (req, res) =>{
+    app.post("/kurss/ustanove/dodati", async (req, res) =>{
+        console.log("wot");
         try{
+            console.log("zasto");
             const latlng = req.body.latlng;
             const ime_ustanove= req.body.ime_ustanove;
-            
-            const usta = new ustanova_Sema({
+            console.log(latlng);
+            console.log(ime_ustanove);
+            const usta = new ustanova_sema({
                 LatLng: latlng,
                 Ime_ustanove: ime_ustanove
             });
-        
+            const sacuvan_ustanova = await usta.save();
             res.json({
             uspesno:true,
-            ustanove: usta
+            ustanove: sacuvan_ustanova
         });
         }
             catch(err){
@@ -374,7 +372,7 @@ const storage = multer.diskStorage({
 
     });
 
-    app.get("/kurs/ustanove", async (req, res) =>{
+    app.get("/kurss/ustanove", async (req, res) =>{
         try{
             const usta = await ustanova_sema.find();
         
@@ -391,25 +389,3 @@ const storage = multer.diskStorage({
         }
 
     });
-=======
-    //Prosecna ocena kursa
-    // app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
-    //     try {
-    //         const id_kursa = req.params.id_kursa;
-
-    //         const kurs = await kurss.findById(id_kursa);
-
-    //         const prosek = kurs.ocena / kurs.broj_ocena;
-
-    //         res.json({
-    //             uspesno: true,
-    //             prosek: prosek
-    //         });
-    //     } catch (err) {
-    //         res.status(404).json({
-    //             uspesno: false,
-    //             poruka: err.message,
-    //         });
-    //     }
-    // });
->>>>>>> 5fa30558f2b686ec749367cde9df7ed21cbc5a74
