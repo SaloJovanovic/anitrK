@@ -329,3 +329,24 @@ const storage = multer.diskStorage({
             });
         }
     });
+
+    //Prosecna ocena kursa
+    app.get("/kurs/prosecna_ocena/:id_kursa", async (req, res) => {
+        try {
+            const id_kursa = req.params.id_kursa;
+
+            const kurs = await kurss.findById(id_kursa);
+
+            const prosek = kurs.ocena / kurs.broj_ocena;
+
+            res.json({
+                uspesno: true,
+                prosek: prosek
+            });
+        } catch (err) {
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+    });
