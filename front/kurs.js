@@ -1,12 +1,6 @@
+var mymap = L.map('mapid').setView([44.787197, 20.457273], 9);
+var s;
 
-function dajMapu(koordinate) {
-            
-        var res = koordinate.split(", ");
-        res[0] = res[0].replace("(", "");
-        res[1] = res[1].replace(")", "");
-        var Lan = parseFloat(res[0])
-        var Lng = parseFloat(res[1])
-        var mymap = L.map('mapid').setView([Lan, Lng], 9);
         L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=QEkQHmpDImGWW1v52pUp', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -16,8 +10,7 @@ function dajMapu(koordinate) {
             accessToken: 'pk.eyJ1IjoiYW5kcmVqYmFuZSIsImEiOiJja24wN21sOHAwNTZ5MnFsOHJ5aHRzbHZjIn0.bIDcgj1AN5UzSRoy5R-tJg'
         }).addTo(mymap);
 
-        var marker = L.marker([Lan, Lng]).addTo(mymap);
-    }
+        var marker = L.marker([44.787197, 20.457273]).addTo(mymap);
 
 GetData();
 
@@ -33,9 +26,7 @@ async function GetData() {
         console.log(kurs);
         usernameInstruktoraPom = await axios.get(`/api/profili/id/${kurs.data.kurs.id_instruktora}`)
         let usernameInstruktora = usernameInstruktoraPom.data.profil.user_name;
-        const ustanovaOsoba = kurs.data.kurs.ustanova_id;
-        const ustanova = await axios.get(`/kurs/ustanove/${ustanovaOsoba}`);
-        RenderCards(kurs.data.kurs, usernameInstruktora, ustanova);
+        RenderCards(kurs.data.kurs, usernameInstruktora);
     } catch (err) {
         console.log(err);
         //window.location.href = "index.html";
@@ -45,10 +36,10 @@ async function GetData() {
     // GetData2();
 }
 
-function RenderCards(kurs, usernameInstruktora, ustanova) {
+function RenderCards(kurs, usernameInstruktora) {
     const cardsDiv = document.querySelector(".kurs-content");
     let cards = "";
-    cards += CreateCard(kurs, usernameInstruktora, ustanova);
+    cards += CreateCard(kurs, usernameInstruktora);
 
     console.log("ALO BRE");
     console.log(cards);
@@ -56,7 +47,7 @@ function RenderCards(kurs, usernameInstruktora, ustanova) {
     cardsDiv.innerHTML = cards;
 }
 
-async function CreateCard(kurs, usernameInstruktora, ustanova) {
+function CreateCard(kurs, usernameInstruktora) {
     const naziv = kurs.naziv;
     const opis = kurs.deskripcija;
     const ocena = kurs.ocena;
@@ -65,7 +56,7 @@ async function CreateCard(kurs, usernameInstruktora, ustanova) {
     const procenat = kurs.procenat_human;
     const sakupljenNovac = kurs.skupljene_pare;
     const ustanovaOsoba = kurs.ustanova_id;
-    dajMapu(ustanova.LatLng);
+    const idKursa = kurs._id;
     card = `
     <div class="kurs-container">
         <h1>${naziv}</h1>
@@ -103,11 +94,17 @@ async function CreateCard(kurs, usernameInstruktora, ustanova) {
         <div id="mapid"></div>
     </div>
     <div class="kurs-container">
-        <a href="#" class="btn">RPETPLATI SE</a>
+        <a href="prijavljen.html?id=${idKursa}" onclick="odvedime();" class="btn">RPETPLATI SE</a>
     </div>`
     
     return card;
 }
+
+function odvedime() {
+    window.open(
+        "https://www.paypal.com/rs/signin", "_blank");
+}
+
 // async function Popunjen_i_prijavljen(){
 //     console.log("tu sam");
 //     const urlParams = new URLSearchParams(window.location.search);
