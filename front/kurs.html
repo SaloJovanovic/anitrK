@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="index.html" class="logo">
+                <img class="logo-img" src="images/logo-colorful.png">
+            </a>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="index.html" onclick="toggleMenu();">Početna</a></li>
+                <li><a href="index.html#kursevi" onclick="toggleMenu();">Kursevi</a></li>
+                <li><a href="#articles" onclick="toggleMenu();">O nama</a></li>
+                <li><a href="#contact" onclick="toggleMenu();">Kontakt</a></li>
+                <li><a href="register.html" id="register-btn" onclick="toggleMenu();">REGISTRUJ SE</a></li>
+            </ul>
+        </header>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
