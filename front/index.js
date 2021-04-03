@@ -1,4 +1,15 @@
-console.log("cao");
+if (Cookies.get('log_id') != null) {
+    document.querySelector('#register-btn').innerHTML = "IZLOGUJ SE";
+    dobijIme();
+}
+
+async function dobijIme(){
+    const idKorisnika = Cookies.get('log_id');
+
+    const profil = await axios.get(`/api/profili/id/${idKorisnika}`);
+
+    document.querySelector("#username-p").innerHTML = profil.data.profil.user_name;
+}
 
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -9,3 +20,15 @@ window.addEventListener('scroll', function() {
     else
         logo.src = 'images/logo-colorful.png';
 });
+
+function ulogujSe() {
+    if (Cookies.get('log')) {
+        Cookies.remove("log");
+        Cookies.remove("log_id");
+        window.location.href = 'index.html';
+        document.querySelector("#username-p").innerHTML = "";
+    }
+    else {
+        window.location = "login.html";
+    }
+}
