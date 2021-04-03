@@ -408,3 +408,30 @@ const storage = multer.diskStorage({
         }
 
     });
+
+    //trazernje preko latlng-a
+    app.get("/kurss/ustanove", async (req, res) =>{
+        try{
+            const latlng = req.body.latlng;
+            const usta = await ustanova_sema.find();
+
+            for (let i = 0; i < usta.length; i++) {
+                if (usta.LatLng == latlng) {
+                    var ustanova = usta._id;
+                    break;
+                }
+            }
+        
+            res.json({
+            uspesno:true,
+            ustanove: ustsanova
+        });
+        }
+            catch(err){
+            res.status(404).json({
+                uspesno: false,
+                poruka: err.message,
+            });
+        }
+
+    });
